@@ -78,7 +78,9 @@ set number
 set nowrap                    " 取消换行。
 
 "括号配对情况
-set showmatch
+"set showmatch
+"禁止括号配对                                                                                                                              
+let loaded_matchparen = 1
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -540,6 +542,7 @@ Bundle 'Valloric/YouCompleteMe'
 let g:ycm_key_list_select_completion = ['<Down>']
 "let g:ycm_key_list_previous_completion=['<c-p>']
 let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 
 
 " for markdown
