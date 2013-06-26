@@ -49,7 +49,7 @@ set nobackup
 set noswapfile
 
 " 突出显示当前行等 不喜欢这种定位可注解
-set cursorcolumn
+"set cursorcolumn
 set cursorline              " 突出显示当前行
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
@@ -79,11 +79,10 @@ set nowrap                    " 取消换行。
 
 "括号配对情况
 "set showmatch
-"禁止括号配对                                                                                                                              
+"禁止括号配对
 let loaded_matchparen = 1
 " How many tenths of a second to blink when matching brackets
 set mat=2
-
 "设置文内智能搜索提示
 " 高亮search命中的文本。
 set hlsearch
@@ -123,7 +122,13 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showcmd
 " A buffer becomes hidden when it is abandoned
 set hidden
+
 set wildmode=list:longest
+" 增强模式中的命令行自动完成操作
+set wildmenu
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc,*.class
+
 set ttyfast
 
 
@@ -213,11 +218,6 @@ inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
 inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-
-" 增强模式中的命令行自动完成操作
-set wildmenu
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.class
 
 " Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
@@ -332,9 +332,6 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
-"Use arrow key to change buffer"
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
 
 ""Jump to start and end of line using the home row keys
 ""
@@ -372,10 +369,21 @@ map <Leader>sa ggVG"
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc'"
 
+
+" Close the current window
+map <leader>wc :close<cr>
+" 关闭处本窗口外的其他所有窗口
+map <leader>wo :only<cr>
+
+
+"Use arrow key to change buffer"
+noremap <left> :bp<CR>
+noremap <right> :bn<CR>
 " Close the current buffer
-map <leader>bd :Bclose<cr>
-" " Close all the buffers
+map <leader>bd :bd<cr>
+" Open all the buffers
 map <leader>ba :1,1000 bd!<cr>
+
 
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -518,10 +526,12 @@ let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
 "自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
-Bundle 'Raimondi/delimitMate'
+"Bundle 'Raimondi/delimitMate'
 
 "快速 加减注释
 Bundle 'scrooloose/nerdcommenter'
+map <C-h><C-h> <leader>c<space>
+imap <C-h><C-h> <esc><leader>c<space>
 
 "快速插入代码片段
 Bundle 'vim-scripts/UltiSnips'
@@ -669,4 +679,3 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
-
