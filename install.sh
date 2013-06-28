@@ -10,3 +10,6 @@ cp _ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/cpp/ycm/
 cd ~/.vim/bundle/YouCompleteMe
 sudo apt-get install build-essential cmake python-dev 
 ./install.sh --clang-completer
+
+go get -u github.com/nsf/gocode
+cp bin/gocode ~/bin
