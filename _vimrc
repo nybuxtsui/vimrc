@@ -589,7 +589,8 @@ let g:pyflakes_use_quickfix = 0
 
 " for golang
 Bundle 'jnwhiteh/vim-golang'
-
+Bundle 'fsouza/go.vim'                                                                                                             
+Bundle 'Blackrush/vim-gocode'
 
 " for javascript
 Bundle "pangloss/vim-javascript"
