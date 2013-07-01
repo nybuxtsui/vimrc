@@ -75,7 +75,7 @@ set tm=500
 
 "显示行号：
 set number
-set nowrap                    " 取消换行。
+"set nowrap                    " 取消换行。
 
 "括号配对情况
 "set showmatch
@@ -303,6 +303,7 @@ set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
 au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nmap <F12> <leader>p
 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
@@ -530,15 +531,16 @@ let g:ctrlp_follow_symlinks=1
 
 "快速 加减注释
 Bundle 'scrooloose/nerdcommenter'
-map <C-h><C-h> <leader>c<space>
-imap <C-h><C-h> <esc><leader>c<space>
+nmap <c-h><c-h> <leader>c<space>
+vmap <c-h><c-h> <leader>c<space>
+imap <c-h><c-h> <esc><leader>c<space>
 
 "快速插入代码片段
-Bundle 'vim-scripts/UltiSnips'
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" Bundle 'vim-scripts/UltiSnips'
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<tab>"
 "定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
-let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
+" let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
 
 " 快速加入修改环绕字符
 Bundle 'tpope/vim-surround'
@@ -548,10 +550,11 @@ Bundle 'tpope/vim-repeat'
 "迄今位置用到的最好的自动VIM自动补全插件
 Bundle 'Valloric/YouCompleteMe'
 "youcompleteme  默认tab  s-tab 和自动补全冲突
+"注释掉乐UltiSnips，恢复选用tab, s-tab
 "let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
+" let g:ycm_key_list_select_completion = ['<Down>']
 "let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_previous_completion = ['<Up>']
+" let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 
 
@@ -588,8 +591,8 @@ let g:pyflakes_use_quickfix = 0
 
 
 " for golang
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'fsouza/go.vim'                                                                                                             
+" Bundle 'jnwhiteh/vim-golang'
+Bundle 'fsouza/go.vim'
 Bundle 'Blackrush/vim-gocode'
 
 " for javascript
