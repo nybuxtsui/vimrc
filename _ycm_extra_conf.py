@@ -80,7 +80,9 @@ flags = [
 '-isystem',
 './tests/gmock/include',
 '-I',
-'/usr/include/x86_64-linux-gnu/c++/4.7'
+'/usr/include/x86_64-linux-gnu/c++/4.7',
+'-I',
+os.environ.get('HOME') + '/include'
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
