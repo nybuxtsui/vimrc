@@ -336,8 +336,8 @@ nnoremap <silent> g* g*zz
 
 ""Jump to start and end of line using the home row keys
 ""
-nmap t o<ESC>k
-nmap T O<ESC>j
+" nmap t o<ESC>k
+" nmap T O<ESC>j
 
 " ctrl +jk to move lines   经常敲错换错行...一致没想好配哪个映射
 "noremap <C-k> :m+<CR>
