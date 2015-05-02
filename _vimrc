@@ -57,7 +57,8 @@ set cursorline              " 突出显示当前行
 set t_ti= t_te=
 
 "- 则点击光标不会换,用于复制
-set mouse-=a           " 鼠标暂不启用, 键盘党....
+"set mouse-=a           " 鼠标暂不启用, 键盘党....
+set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
 
@@ -123,7 +124,8 @@ set showcmd
 " A buffer becomes hidden when it is abandoned
 set hidden
 
-set wildmode=list:longest
+"set wildmode=list:longest
+set wildmode=longest:full,full
 " 增强模式中的命令行自动完成操作
 set wildmenu
 " Ignore compiled files
@@ -262,6 +264,10 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+"错误信息
+map <C-left> :cp<CR>
+map <C-right> :cn<CR>
+
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
 map j gj
@@ -323,8 +329,8 @@ nnoremap ; :
 nnoremap <leader>v V`}
 
 "Use sane regexes"
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 
 "Keep search pattern at the center of the screen."
 nnoremap <silent> n nzz
@@ -426,34 +432,61 @@ let g:netrw_home='~/bak'
 Bundle 'majutsushi/tagbar'
 nmap <F9> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 "标签导航 要装ctags
-Bundle 'vim-scripts/taglist.vim'
-set tags=tags;/
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
-nnoremap <silent> <F8> :TlistToggle<CR>
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Open = 0
-let Tlist_Auto_Update = 1
-let Tlist_Close_On_Select = 0
-let Tlist_Compact_Format = 0
-let Tlist_Display_Prototype = 0
-let Tlist_Display_Tag_Scope = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Hightlight_Tag_On_BufEnter = 1
-let Tlist_Inc_Winwidth = 0
-let Tlist_Max_Submenu_Items = 1
-let Tlist_Max_Tag_Length = 30
-let Tlist_Process_File_Always = 0
-let Tlist_Show_Menu = 0
-let Tlist_Show_One_File = 1
-let Tlist_Sort_Type = "order"
-let Tlist_Use_Horiz_Window = 0
-let Tlist_Use_Right_Window = 0
-let Tlist_WinWidth = 25
+"Bundle 'vim-scripts/taglist.vim'
+"set tags=tags;/
+"let Tlist_Ctags_Cmd="/usr/bin/ctags"
+"nnoremap <silent> <F8> :TlistToggle<CR>
+"let Tlist_Auto_Highlight_Tag = 1
+"let Tlist_Auto_Open = 0
+"let Tlist_Auto_Update = 1
+"let Tlist_Close_On_Select = 0
+"let Tlist_Compact_Format = 0
+"let Tlist_Display_Prototype = 0
+"let Tlist_Display_Tag_Scope = 1
+"let Tlist_Enable_Fold_Column = 0
+"let Tlist_Exit_OnlyWindow = 1
+"let Tlist_File_Fold_Auto_Close = 0
+"let Tlist_GainFocus_On_ToggleOpen = 1
+"let Tlist_Hightlight_Tag_On_BufEnter = 1
+"let Tlist_Inc_Winwidth = 0
+"let Tlist_Max_Submenu_Items = 1
+"let Tlist_Max_Tag_Length = 30
+"let Tlist_Process_File_Always = 0
+"let Tlist_Show_Menu = 0
+"let Tlist_Show_One_File = 1
+"let Tlist_Sort_Type = "order"
+"let Tlist_Use_Horiz_Window = 0
+"let Tlist_Use_Right_Window = 0
+"let Tlist_WinWidth = 25
 
 
 "状态栏增强展示
@@ -492,18 +525,18 @@ au Syntax * RainbowParenthesesLoadBraces
 
 
 "代码排版缩进标识
-Bundle 'Yggdroot/indentLine'
-let g:indentLine_noConcealCursor = 1
-let g:indentLine_color_term = 0
-let g:indentLine_char = '¦'
+"Bundle 'Yggdroot/indentLine'
+"let g:indentLine_noConcealCursor = 1
+"let g:indentLine_color_term = 0
+"let g:indentLine_char = '¦'
 
 
 "主题 solarized
-Bundle 'altercation/vim-colors-solarized'
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
+"Bundle 'altercation/vim-colors-solarized'
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="normal"
 
 "主题 molokai
 Bundle 'tomasr/molokai'
@@ -545,17 +578,18 @@ imap <c-h><c-h> <esc><leader>c<space>
 " 快速加入修改环绕字符
 Bundle 'tpope/vim-surround'
 "for repeat -> enhance surround.vim, . to repeat command
-Bundle 'tpope/vim-repeat'
+"Bundle 'tpope/vim-repeat'
 
 "迄今位置用到的最好的自动VIM自动补全插件
 Bundle 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
 "youcompleteme  默认tab  s-tab 和自动补全冲突
 "注释掉乐UltiSnips，恢复选用tab, s-tab
 "let g:ycm_key_list_select_completion=['<c-n>']
 " let g:ycm_key_list_select_completion = ['<Down>']
 "let g:ycm_key_list_previous_completion=['<c-p>']
 " let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 
 
 " for markdown
@@ -592,8 +626,11 @@ let g:pyflakes_use_quickfix = 0
 
 " for golang
 " Bundle 'jnwhiteh/vim-golang'
-Bundle 'fsouza/go.vim'
+" Bundle 'fsouza/go.vim'
 Bundle 'Blackrush/vim-gocode'
+Bundle 'cespare/vim-golang'
+Bundle 'dgryski/vim-godef'
+let g:godef_split = 0
 
 " for javascript
 Bundle "pangloss/vim-javascript"
@@ -662,12 +699,18 @@ if has("gui_running")
 endif
 
 set t_Co=256
-set background=dark
+if has('gui_running')
+    set background=dark
+    colorscheme molokai
+    "set background=light
+    "colorscheme solarized
+else
+    set background=dark
+    colorscheme molokai
+endif
+hi search guibg=LightBlue
 
 " 修改主题和颜色展示
-"colorscheme solarized
-
-colorscheme molokai
 "colorscheme desert
 
 "设置标记一列的背景颜色和数字一行颜色一致
@@ -683,3 +726,8 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+
+"gvim的字体
+"set guifont=Monospace\ 10
+set guifont=Menlo:h14
