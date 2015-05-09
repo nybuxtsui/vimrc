@@ -11,5 +11,12 @@ cd ~/.vim/bundle/YouCompleteMe
 sudo apt-get install build-essential cmake python-dev 
 ./install.sh --clang-completer
 
-go get -u github.com/nsf/gocode
-cp bin/gocode ~/bin
+apt-get install exuberant-ctags
+
+cd ~/tmp
+export GOPATH=$PWD
+go get github.com/jstemmer/gotags
+go get github.com/nsf/gocode
+go get code.google.com/p/rog-go/exp/cmd/godef
+cd bin
+cp gocode gotags godef
