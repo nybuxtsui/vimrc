@@ -57,8 +57,8 @@ set cursorline              " 突出显示当前行
 set t_ti= t_te=
 
 "- 则点击光标不会换,用于复制
-"set mouse-=a           " 鼠标暂不启用, 键盘党....
-set mouse=a
+set mouse-=a           " 鼠标暂不启用, 键盘党....
+"set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
 
@@ -297,7 +297,7 @@ nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
 ""为方便复制，用<F2>开启/关闭行号显示:
-nnoremap <F2> :set nonumber! number?<CR>
+nnoremap <F2> :set nonumber! number?<CR>:set norelativenumber! norelativenumber?<CR>
 nnoremap <F3> :set list! list?<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
               "set paste
