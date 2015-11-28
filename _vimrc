@@ -22,9 +22,6 @@
 "set guifont=Monaco:h20          " 字体 && 字号
 "配色方案
 
-"禁止beep
-set noerrorbells
-
 " history存储长度。
 set history=2000
 
