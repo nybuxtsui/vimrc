@@ -22,6 +22,9 @@
 "set guifont=Monaco:h20          " 字体 && 字号
 "配色方案
 
+"禁止beep
+set noerrorbells
+
 " history存储长度。
 set history=2000
 
@@ -639,8 +642,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 Bundle 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1
