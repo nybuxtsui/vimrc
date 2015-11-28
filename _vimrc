@@ -297,16 +297,16 @@ nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
 ""为方便复制，用<F2>开启/关闭行号显示:
-nnoremap <F2> :set nonumber! number?<CR>:set norelativenumber! norelativenumber?<CR>
+nnoremap <F2> :set nonumber! number?<CR> :set norelativenumber! norelativenumber?<CR>
 nnoremap <F3> :set list! list?<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
-              "set paste
+"set paste
 set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
-au InsertLeave * set nopaste
+"au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 nmap <F12> <leader>p
@@ -581,8 +581,8 @@ Bundle 'tpope/vim-surround'
 "Bundle 'tpope/vim-repeat'
 
 "迄今位置用到的最好的自动VIM自动补全插件
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"Bundle 'Valloric/YouCompleteMe'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "youcompleteme  默认tab  s-tab 和自动补全冲突
 "注释掉乐UltiSnips，恢复选用tab, s-tab
@@ -627,10 +627,23 @@ let g:pyflakes_use_quickfix = 0
 " for golang
 " Bundle 'jnwhiteh/vim-golang'
 " Bundle 'fsouza/go.vim'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'cespare/vim-golang'
-Bundle 'dgryski/vim-godef'
-let g:godef_split = 0
+"
+"Bundle 'Blackrush/vim-gocode'
+"Bundle 'cespare/vim-golang'
+"Bundle 'dgryski/vim-godef'
+"let g:godef_split = 0
+Bundle 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+Bundle 'Shougo/neocomplete.vim'
+let g:neocomplete#enable_at_startup = 1
 
 " for javascript
 Bundle "pangloss/vim-javascript"
@@ -730,4 +743,4 @@ highlight SpellLocal term=underline cterm=underline
 
 "gvim的字体
 "set guifont=Monospace\ 10
-set guifont=Menlo:h14
+set guifont=Monaco\ 10
