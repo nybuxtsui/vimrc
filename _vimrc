@@ -68,6 +68,7 @@ set title                " change the terminal's title
 set novisualbell           " don't beep
 set noerrorbells         " don't beep
 set t_vb=
+set visualbell t_vb=
 set tm=500
 
 "==========================================
