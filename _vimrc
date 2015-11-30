@@ -548,7 +548,7 @@ let g:molokai_original = 1
 Bundle 'Lokaltog/vim-easymotion'
 
 "for file search ctrlp
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 "set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
