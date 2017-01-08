@@ -307,7 +307,7 @@ set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
                                 "    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
-"au InsertLeave * set nopaste
+au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 nmap <F12> <leader>p
@@ -548,7 +548,7 @@ let g:molokai_original = 1
 Bundle 'Lokaltog/vim-easymotion'
 
 "for file search ctrlp
-Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 "set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
@@ -582,8 +582,8 @@ Bundle 'tpope/vim-surround'
 "Bundle 'tpope/vim-repeat'
 
 "迄今位置用到的最好的自动VIM自动补全插件
-"Bundle 'Valloric/YouCompleteMe'
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+Bundle 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "youcompleteme  默认tab  s-tab 和自动补全冲突
 "注释掉乐UltiSnips，恢复选用tab, s-tab
@@ -603,11 +603,11 @@ Bundle 'hdima/python-syntax'
 let python_highlight_all = 1
 
 "for nginx conf file highlight.   need to confirm it works
-Bundle 'thiderman/nginx-vim-syntax'
+"Bundle 'thiderman/nginx-vim-syntax'
 
 " task list
-Bundle 'vim-scripts/TaskList.vim'
-map <leader>td <Plug>TaskList
+"Bundle 'vim-scripts/TaskList.vim'
+"map <leader>td <Plug>TaskList
 
 " 编辑时自动语法检查标红, vim-flake8目前还不支持,所以多装一个
 " 使用pyflakes,速度比pylint快
@@ -616,8 +616,13 @@ let g:syntastic_error_symbol='>>'
 let g:syntastic_warning_symbol='>'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting = 0
+
+"let g:syntastic_aggregate_errors = 1
 "let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
 let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_go_checkers = ['go']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
 highlight SyntasticErrorSign guifg=white guibg=black
 
 " python fly check, 弥补syntastic只能打开和保存才检查语法的不足
@@ -640,11 +645,13 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
 
-Bundle 'Shougo/neocomplete.vim'
-let g:neocomplete#enable_at_startup = 1
+"let g:go_metalinter_autosave = 1
+"let g:go_metalinter_autosave_enabled = ['errcheck', 'vet', 'golint']
+
+"Bundle 'Shougo/neocomplete.vim'
+"let g:neocomplete#enable_at_startup = 1
 
 " for javascript
 Bundle "pangloss/vim-javascript"
@@ -656,8 +663,8 @@ let g:html_indent_style1 = "inc"
 Bundle 'tpope/vim-fugitive'
 
 "edit history, 可以查看回到某个历史状态
-Bundle 'sjl/gundo.vim'
-nnoremap <leader>h :GundoToggle<CR>
+"Bundle 'sjl/gundo.vim'
+"nnoremap <leader>h :GundoToggle<CR>
 
 "for mru, recently opened files
 Bundle 'vim-scripts/mru.vim'
@@ -667,19 +674,19 @@ let MRU_Use_Current_Window = 0
 let MRU_Max_Entries = 100
 
 "for jinja2 highlight
-Bundle 'Glench/Vim-Jinja2-Syntax'
+"Bundle 'Glench/Vim-Jinja2-Syntax'
 
 Bundle 'vim-scripts/matchit.zip'
 
 "for code alignment
-Bundle 'godlygeek/tabular'
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+"Bundle 'godlygeek/tabular'
+"nmap <Leader>a= :Tabularize /=<CR>
+"vmap <Leader>a= :Tabularize /=<CR>
+"nmap <Leader>a: :Tabularize /:\zs<CR>
+"vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "for jquery
-Bundle 'nono/jquery.vim'
+"Bundle 'nono/jquery.vim'
 
 "for show no user whitespaces
 Bundle 'bronson/vim-trailing-whitespace'
